@@ -30,7 +30,7 @@ Or from this folder: `npx vercel` then `npx vercel --prod`.
 
 - Check it on your phone and make sure the photos load.
 - Photos are hotlinked from Unsplash (free Unsplash License). For reliability, download them into an `images/` folder and update the `src` paths.
-- The address, phone number and team names are made up on purpose. Your real contact details are in the demo bar and footer.
+- The address and team names are made up on purpose. Every phone number on the site is your real one (825-461-1264).
 - Keep `<meta name="robots" content="noindex">` so the fake business stays out of Google.
 
 ## Photo credits (Unsplash)
