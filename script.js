@@ -102,6 +102,18 @@ function clearError(field) {
   wrap.querySelector('.error')?.remove();
   field.removeAttribute('aria-invalid');
 }
+// Evening slots only on late-closing days (Thu and Fri)
+const evening = form.querySelector('input[name="time"][value="Evening"]');
+const lateDay = (v) => !v || HOURS[new Date(`${v}T12:00:00`).getDay()]?.[1] >= 20;
+function syncEvening() {
+  const ok = lateDay(dateInput.value);
+  evening.disabled = !ok;
+  clearError(evening);
+  if (!ok && evening.checked) form.querySelector('input[name="time"][value="Morning"]').checked = true;
+}
+dateInput.addEventListener('input', syncEvening);
+dateInput.addEventListener('change', syncEvening);
+
 form.querySelectorAll('input, select, textarea').forEach((el) => {
   el.addEventListener('input', () => clearError(el));
   el.addEventListener('change', () => clearError(el));
@@ -130,6 +142,10 @@ form.addEventListener('submit', (e) => {
     const field = document.getElementById(id);
     if (!ok(field.value)) { setError(field, message); firstBad ||= field; } else { clearError(field); }
   });
+  if (evening.checked && !lateDay(dateInput.value)) {
+    setError(evening, 'Evening appointments are Thursday and Friday only.');
+    firstBad ||= evening;
+  } else { clearError(evening); }
   if (firstBad) { firstBad.focus(); return; }
 
   const name = document.getElementById('name').value.trim().split(' ')[0];
@@ -137,4 +153,5 @@ form.addEventListener('submit', (e) => {
   status.textContent = `Thanks ${name}, we'll text you to confirm your ${service}. (This is a demo site, so nothing was actually sent.)`;
   status.classList.add('ok');
   form.reset();
+  syncEvening();
 });
