@@ -2,21 +2,21 @@
 
 A demo website for a made-up salon and barber shop in Beaumont, Alberta. Built by Samuel Olabode to show local salons and barbers what a simple, mobile-friendly site looks like.
 
-Plain HTML, CSS and JavaScript. No build step. Headings use the Fraunces font from Google Fonts (falls back to Georgia).
+Plain HTML, CSS and JavaScript. No build step. Headings use Bodoni Moda and body text uses Figtree, both from Google Fonts.
 
 ## Features
 
-- Services and prices in tabs (Cuts & styling, Barber, Colour, Extras), keyboard accessible
-- Live "Open now / Closed now" status in the info strip, calculated in Edmonton time, plus today's row highlighted in the hours table
-- Team cards and photo gallery
-- Booking request form: validates, blocks closed days (Sunday and Monday), then shows a demo message. Nothing is sent.
-- Sticky Call / Book now bar on phones
+- Prices in tabs (Cuts & styling, Barber, Colour, Extras), with a hair-length switch (short, shoulder, long) that updates the length-based prices
+- Walk-in status in Edmonton time (walk-ins Tuesday to Thursday), shown under the hero and in the phone bar, plus today highlighted in the weekly hours
+- Team list with "Book with" links that fill in the stylist on the booking form
+- Booking request form: validates, blocks closed days, only allows evening slots on Thursday and Friday, shows the chosen service's time and price, then shows a demo message. Nothing is sent.
+- Sticky walk-in status and Book bar on phones
 
 ## Files
 
 - `index.html`: the page
 - `styles.css`: all styles (mobile-first, breakpoints at 640px and 960px)
-- `script.js`: menu, tabs, open/closed status, booking form
+- `script.js`: menu, price tabs and hair length, walk-in status, booking form
 
 ## Deploy on Vercel
 

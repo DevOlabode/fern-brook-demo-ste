@@ -54,33 +54,49 @@ function edmontonNow() {
   return { day, hour: Number(get('hour')) + Number(get('minute')) / 60 };
 }
 
+// Walk-in status: walk-ins Tuesday to Thursday while open
+const WALKIN_DAYS = [2, 3, 4];
+
 (function updateStatus() {
   const { day, hour } = edmontonNow();
   const today = HOURS[day];
-  const statusEl = document.getElementById('open-status');
-  const detailEl = document.getElementById('open-detail');
-  const dot = document.getElementById('status-dot');
+  const statusEl = document.getElementById('walkin-status');
+  const detailEl = document.getElementById('walkin-detail');
+  const mobileEl = document.getElementById('mobile-status');
 
-  document.querySelector(`.hours tr[data-day="${day}"]`)?.classList.add('today');
+  document.querySelector(`.week li[data-day="${day}"]`)?.classList.add('today');
 
-  if (today && hour >= today[0] && hour < today[1]) {
-    statusEl.textContent = 'Open now';
-    detailEl.textContent = `Until ${fmt(today[1])} today`;
-    dot.classList.add('open');
+  const openNow = today && hour >= today[0] && hour < today[1];
+  if (openNow && WALKIN_DAYS.includes(day)) {
+    statusEl.textContent = 'open now';
+    detailEl.textContent = `until ${fmt(today[1])}, no booking needed`;
+    mobileEl.textContent = `Walk-ins until ${fmt(today[1])} today`;
     return;
   }
 
-  // Find the next opening time
+  // Next walk-in morning
   let next = null;
-  if (today && hour < today[0]) next = { label: 'today', h: today[0] };
+  if (WALKIN_DAYS.includes(day) && hour < today[0]) next = 'today';
   for (let i = 1; !next && i <= 7; i++) {
-    const d = (day + i) % 7;
-    if (HOURS[d]) next = { label: i === 1 ? 'tomorrow' : DAYS[d], h: HOURS[d][0] };
+    if (WALKIN_DAYS.includes((day + i) % 7)) next = i === 1 ? 'tomorrow' : DAYS[(day + i) % 7];
   }
-  statusEl.textContent = 'Closed now';
-  detailEl.textContent = `Opens ${next.label} at ${fmt(next.h)}`;
-  dot.classList.add('closed');
+  statusEl.textContent = `from ${next} at ${fmt(9)}`;
+  detailEl.textContent = openNow ? `Today is booked appointments only, open until ${fmt(today[1])}.` : '';
+  mobileEl.textContent = `Next walk-ins: ${next}, 9 am`;
 })();
+
+// Prices by hair length
+const lengthBox = document.getElementById('length');
+lengthBox.addEventListener('change', (e) => {
+  document.querySelectorAll('.price-list li[data-prices]').forEach((li) => {
+    const price = li.querySelector('.price');
+    price.textContent = `$${li.dataset.prices.split(',')[e.target.value]}`;
+    price.classList.remove('changed');
+    void price.offsetWidth; // restart the flash
+    price.classList.add('changed');
+  });
+  showServiceHint();
+});
 
 // Booking form (demo: validates, then shows a message instead of sending)
 const form = document.getElementById('book-form');
@@ -102,6 +118,21 @@ function clearError(field) {
   wrap.querySelector('.error')?.remove();
   field.removeAttribute('aria-invalid');
 }
+// "Book with" links prefill the stylist
+document.querySelectorAll('.book-with').forEach((a) => a.addEventListener('click', () => {
+  document.getElementById('stylist').value = a.dataset.stylist;
+}));
+
+// Show time and price for the chosen service, read from the price list
+const serviceSelect = document.getElementById('service');
+const serviceHint = document.getElementById('service-hint');
+function showServiceHint() {
+  const li = [...document.querySelectorAll('.price-list li')]
+    .find((el) => el.querySelector('h3').textContent === serviceSelect.value);
+  serviceHint.textContent = li ? `${li.querySelector('.time').textContent} \u00b7 ${li.querySelector('.price').textContent}${li.dataset.prices ? ' for your hair length' : ''}` : '';
+}
+serviceSelect.addEventListener('change', showServiceHint);
+
 // Evening slots only on late-closing days (Thu and Fri)
 const evening = form.querySelector('input[name="time"][value="Evening"]');
 const lateDay = (v) => !v || HOURS[new Date(`${v}T12:00:00`).getDay()]?.[1] >= 20;
@@ -150,8 +181,9 @@ form.addEventListener('submit', (e) => {
 
   const name = document.getElementById('name').value.trim().split(' ')[0];
   const service = document.getElementById('service').value;
-  status.textContent = `Thanks ${name}, we'll text you to confirm your ${service}. (This is a demo site, so nothing was actually sent.)`;
+  status.textContent = `Got it, ${name}. Expect a text about your ${service.toLowerCase()} shortly. (Sample site: this request didn't go anywhere.)`;
   status.classList.add('ok');
   form.reset();
   syncEvening();
+  showServiceHint();
 });

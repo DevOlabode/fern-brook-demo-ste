@@ -6,35 +6,31 @@
   <title>Fernbrook Hair &amp; Barber | Beaumont Salon (Demo)</title>
   <meta name="description" content="Demo website for a made-up hair salon and barber shop in Beaumont, Alberta. Built by Samuel Olabode.">
   <meta name="robots" content="noindex">
+  <meta name="theme-color" content="#1d3a2e">
   <meta property="og:title" content="Fernbrook Hair & Barber (Demo site)">
   <meta property="og:description" content="Demo website for a local salon and barber, built by Samuel Olabode, web developer in Edmonton.">
-  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='16' fill='%232b211c'/%3E%3Ctext x='16' y='22' font-family='Georgia,serif' font-size='18' text-anchor='middle' fill='%23e8b49a'%3EF%3C/text%3E%3C/svg%3E">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='7' fill='%231d3a2e'/%3E%3Ctext x='16' y='23.5' font-family='Didot,Bodoni 72,Georgia,serif' font-style='italic' font-size='21' text-anchor='middle' fill='%23f1d8cf'%3Ef%3C/text%3E%3C/svg%3E">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,opsz,wght@0,6..96,500;0,6..96,600;1,6..96,500&family=Figtree:wght@400;500;600;700&display=swap">
   <link rel="stylesheet" href="styles.css">
 </head>
 <body>
 
-  <div class="demo-bar" role="note">
-    <p>Demo website by Samuel Olabode. Fernbrook is a made-up business. Want a site like this? Text <a href="sms:+18254611264">825-461-1264</a></p>
-  </div>
+  <p class="demo-line">Sample site: Fernbrook isn't a real salon. Built by Samuel Olabode &middot; <a href="sms:+18254611264">text 825-461-1264</a></p>
 
   <header class="site-header">
     <div class="container header-inner">
-      <a href="#top" class="brand" aria-label="Fernbrook Hair and Barber, home">
-        <span class="brand-mark" aria-hidden="true">F</span>
-        <span class="brand-text">Fernbrook<span>Hair &amp; Barber</span></span>
-      </a>
+      <a href="#top" class="brand" aria-label="Fernbrook Hair and Barber, home">Fernbrook<span>Hair &amp; Barber</span></a>
       <button class="nav-toggle" aria-expanded="false" aria-controls="site-nav">
         <span class="sr-only">Menu</span><span class="bars" aria-hidden="true"></span>
       </button>
       <nav id="site-nav" class="site-nav" aria-label="Main">
-        <a href="#prices">Services &amp; prices</a>
+        <a href="#prices">Prices</a>
         <a href="#team">Team</a>
-        <a href="#gallery">Gallery</a>
-        <a href="#visit">Hours &amp; location</a>
-        <a href="#book" class="btn btn-accent btn-sm">Book now</a>
+        <a href="#visit">Visit</a>
+        <a href="sms:+18254611264" class="nav-text">Text us</a>
+        <a href="#book" class="btn btn-fern nav-book">Book</a>
       </nav>
     </div>
   </header>
@@ -44,53 +40,49 @@
     <section class="hero">
       <img class="hero-bg" src="https://images.unsplash.com/photo-1634449571010-02389ed0f9b0?w=1800&q=75&auto=format&fit=crop" alt="" fetchpriority="high">
       <div class="container hero-inner">
-        <h1>Cuts, colour and fades in Beaumont</h1>
+        <h1>Cuts, colour <em>and</em> fades in Beaumont</h1>
         <p class="lead">A small salon and barber shop on Fernbrook Road. Book online, or just walk in Tuesday to Thursday.</p>
         <div class="hero-actions">
-          <a href="#book" class="btn btn-accent">Book an appointment</a>
-          <a href="#prices" class="btn btn-light">See prices</a>
+          <a href="#book" class="btn btn-blush">Book an appointment</a>
+          <a href="#prices" class="btn btn-ghost">See prices</a>
         </div>
       </div>
     </section>
 
-    <div class="info-strip">
-      <div class="container info-grid">
-        <div class="info-item">
-          <span class="status-dot" id="status-dot" aria-hidden="true"></span>
-          <div><strong id="open-status">Hours</strong><span id="open-detail">Tue to Sat</span></div>
-        </div>
-        <div class="info-item">
-          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 21s-7-6.2-7-11.5A7 7 0 0 1 19 9.5C19 14.8 12 21 12 21z"/><circle cx="12" cy="9.5" r="2.5"/></svg>
-          <div><strong>Unit 2, 4821 Fernbrook Road</strong><span>Beaumont, AB &middot; free parking</span></div>
-        </div>
-        <div class="info-item">
-          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 4h4l2 5-2.5 1.5a11 11 0 0 0 5 5L15 13l5 2v4a2 2 0 0 1-2 2A16 16 0 0 1 3 6a2 2 0 0 1 2-2"/></svg>
-          <div><strong><a href="sms:+18254611264">(825) 461-1264</a></strong><span>Text to book</span></div>
-        </div>
+    <div class="walkin-bar">
+      <div class="container walkin-inner">
+        <p class="walkin"><span class="walkin-label">Walk-ins</span> <strong id="walkin-status">Tuesday to Thursday</strong> <span id="walkin-detail"></span></p>
+        <p class="walkin-where">Unit 2, 4821 Fernbrook Road &middot; <a href="sms:+18254611264">(825) 461-1264</a></p>
       </div>
     </div>
 
     <section id="prices" class="section">
       <div class="container">
-        <header class="section-head">
-          <h2>Services &amp; prices</h2>
-          <p>Colour prices depend on hair length. We'll tell you the total before we start.</p>
-        </header>
+        <h2>Prices</h2>
+        <p class="intro">Longer and thicker hair takes more time and more product, so some prices go up with length. Pick yours and the list updates.</p>
 
-        <div class="tabs" role="tablist" aria-label="Service categories">
-          <button role="tab" id="tab-cuts" aria-controls="panel-cuts" aria-selected="true">Cuts &amp; styling</button>
-          <button role="tab" id="tab-barber" aria-controls="panel-barber" aria-selected="false" tabindex="-1">Barber</button>
-          <button role="tab" id="tab-colour" aria-controls="panel-colour" aria-selected="false" tabindex="-1">Colour</button>
-          <button role="tab" id="tab-extras" aria-controls="panel-extras" aria-selected="false" tabindex="-1">Extras</button>
+        <div class="price-tools">
+          <div class="tabs" role="tablist" aria-label="Service categories">
+            <button role="tab" id="tab-cuts" aria-controls="panel-cuts" aria-selected="true">Cuts &amp; styling</button>
+            <button role="tab" id="tab-barber" aria-controls="panel-barber" aria-selected="false" tabindex="-1">Barber</button>
+            <button role="tab" id="tab-colour" aria-controls="panel-colour" aria-selected="false" tabindex="-1">Colour</button>
+            <button role="tab" id="tab-extras" aria-controls="panel-extras" aria-selected="false" tabindex="-1">Extras</button>
+          </div>
+          <fieldset class="length" id="length">
+            <legend>Hair length</legend>
+            <label><input type="radio" name="length" value="0" checked><span>Short</span></label>
+            <label><input type="radio" name="length" value="1"><span>Shoulder</span></label>
+            <label><input type="radio" name="length" value="2"><span>Long</span></label>
+          </fieldset>
         </div>
 
         <div class="panel" role="tabpanel" id="panel-cuts" aria-labelledby="tab-cuts">
           <ul class="price-list">
-            <li><div><h3>Women's cut &amp; style</h3><p>Wash, cut and blow-dry</p></div><span class="time">60 min</span><span class="price">$55+</span></li>
+            <li data-prices="55,65,75"><div><h3>Women's cut &amp; style</h3><p>Wash, cut and blow-dry</p></div><span class="time">60 min</span><span class="price">$55</span></li>
             <li><div><h3>Men's cut</h3><p>Scissor or clipper cut with wash</p></div><span class="time">30 min</span><span class="price">$32</span></li>
             <li><div><h3>Kids' cut</h3><p>12 and under</p></div><span class="time">25 min</span><span class="price">$22</span></li>
-            <li><div><h3>Blowout</h3><p>Wash and smooth or curled finish</p></div><span class="time">40 min</span><span class="price">$40</span></li>
-            <li><div><h3>Updo or event styling</h3><p>Weddings, grads and events</p></div><span class="time">60 min</span><span class="price">$70+</span></li>
+            <li data-prices="40,48,58"><div><h3>Blowout</h3><p>Wash and smooth or curled finish</p></div><span class="time">40 min</span><span class="price">$40</span></li>
+            <li data-prices="70,80,95"><div><h3>Updo or event styling</h3><p>Weddings, grads and events</p></div><span class="time">60 min</span><span class="price">$70</span></li>
           </ul>
         </div>
         <div class="panel" role="tabpanel" id="panel-barber" aria-labelledby="tab-barber" hidden>
@@ -105,9 +97,9 @@
         <div class="panel" role="tabpanel" id="panel-colour" aria-labelledby="tab-colour" hidden>
           <ul class="price-list">
             <li><div><h3>Root touch-up</h3><p>Up to 1 inch of regrowth</p></div><span class="time">90 min</span><span class="price">$75</span></li>
-            <li><div><h3>Full colour</h3><p>Single process, roots to ends</p></div><span class="time">2 hr</span><span class="price">$95+</span></li>
-            <li><div><h3>Partial highlights</h3><p>Foils around the face and part line</p></div><span class="time">2 hr</span><span class="price">$120+</span></li>
-            <li><div><h3>Balayage</h3><p>Hand-painted, includes toner</p></div><span class="time">3 hr</span><span class="price">$180+</span></li>
+            <li data-prices="95,115,140"><div><h3>Full colour</h3><p>Single process, roots to ends</p></div><span class="time">2 hr</span><span class="price">$95</span></li>
+            <li data-prices="120,140,165"><div><h3>Partial highlights</h3><p>Foils around the face and part line</p></div><span class="time">2 hr</span><span class="price">$120</span></li>
+            <li data-prices="180,220,260"><div><h3>Balayage</h3><p>Hand-painted, includes toner</p></div><span class="time">3 hr</span><span class="price">$180</span></li>
             <li><div><h3>Toner or gloss</h3><p>Refresh tone and shine between colours</p></div><span class="time">45 min</span><span class="price">$40</span></li>
           </ul>
         </div>
@@ -119,34 +111,37 @@
             <li><div><h3>Consultation</h3><p>Planning a big change? Start here</p></div><span class="time">15 min</span><span class="price">No charge</span></li>
           </ul>
         </div>
+        <p class="price-foot">Very thick or curly hair can take a little longer. If the price changes, Maria or your stylist will tell you before starting.</p>
       </div>
     </section>
 
-    <section id="team" class="section section-cream">
+    <section id="team" class="section section-mist">
       <div class="container">
-        <header class="section-head">
-          <h2>The team</h2>
-        </header>
+        <h2>The team</h2>
         <div class="team">
           <article class="member">
             <h3>Maria R.</h3>
-            <p class="role">Owner &middot; Colour specialist</p>
+            <p class="role">Owner, colour</p>
             <p>Opened Fernbrook in 2014 and still does most of the colour work. Ask her about fixing box dye.</p>
+            <a href="#book" class="book-with" data-stylist="Maria R.">Book with Maria</a>
           </article>
           <article class="member">
             <h3>Jordan T.</h3>
             <p class="role">Barber</p>
             <p>Fades and beard trims. If you walk in midweek, you'll probably end up in Jordan's chair.</p>
+            <a href="#book" class="book-with" data-stylist="Jordan T.">Book with Jordan</a>
           </article>
           <article class="member">
             <h3>Aisha K.</h3>
-            <p class="role">Stylist</p>
+            <p class="role">Stylist, curls and events</p>
             <p>Our curly hair specialist. She also does most of the wedding and grad styling, so spring books up early.</p>
+            <a href="#book" class="book-with" data-stylist="Aisha K.">Book with Aisha</a>
           </article>
           <article class="member">
             <h3>Liam P.</h3>
             <p class="role">Stylist</p>
             <p>Quick, tidy cuts for anyone. Usually has a lunch-hour opening or two.</p>
+            <a href="#book" class="book-with" data-stylist="Liam P.">Book with Liam</a>
           </article>
         </div>
       </div>
@@ -154,9 +149,7 @@
 
     <section id="gallery" class="section">
       <div class="container">
-        <header class="section-head">
-          <h2>Gallery</h2>
-        </header>
+        <h2>Gallery</h2>
         <div class="gallery">
           <figure class="g g-tall"><img src="https://images.unsplash.com/photo-1599351431202-1e0f0137899a?w=700&q=75&auto=format&fit=crop" alt="Barber lining up a client's hair with a straight razor" loading="lazy"></figure>
           <figure class="g"><img src="https://images.unsplash.com/photo-1580618672591-eb180b1a973f?w=700&q=75&auto=format&fit=crop" alt="Stylist blow-drying a client's hair with a round brush" loading="lazy"></figure>
@@ -168,44 +161,59 @@
       </div>
     </section>
 
-    <section id="visit" class="section">
-      <div class="container visit-grid">
-        <div>
-          <h2>Hours &amp; location</h2>
-          <table class="hours" aria-label="Opening hours">
-            <tbody>
-              <tr data-day="1"><th scope="row">Monday</th><td>Closed</td></tr>
-              <tr data-day="2"><th scope="row">Tuesday</th><td>9:00 am to 6:00 pm</td></tr>
-              <tr data-day="3"><th scope="row">Wednesday</th><td>9:00 am to 6:00 pm</td></tr>
-              <tr data-day="4"><th scope="row">Thursday</th><td>9:00 am to 8:00 pm</td></tr>
-              <tr data-day="5"><th scope="row">Friday</th><td>9:00 am to 8:00 pm</td></tr>
-              <tr data-day="6"><th scope="row">Saturday</th><td>9:00 am to 4:00 pm</td></tr>
-              <tr data-day="0"><th scope="row">Sunday</th><td>Closed</td></tr>
-            </tbody>
-          </table>
-          <p class="small-note">Closed on stat holidays.</p>
-        </div>
-        <div class="map-card">
-          <div class="map"><iframe src="https://maps.google.com/maps?q=Beaumont%2C%20Alberta&amp;z=14&amp;output=embed" title="Map of Beaumont, Alberta" loading="lazy"></iframe></div>
-          <div class="map-body">
-            <h3>Unit 2, 4821 Fernbrook Road</h3>
-            <p>Beaumont, AB. Parking out front, no steps at the door.</p>
-            <a class="btn btn-outline btn-sm" href="https://www.google.com/maps/search/?api=1&query=Beaumont%2C+Alberta" target="_blank" rel="noopener">Open in Google Maps</a>
+    <section class="section section-blush">
+      <div class="container prep">
+        <h2>Good to know <em>before you come in</em></h2>
+        <div class="prep-list">
+          <div>
+            <h3>First time colouring with us</h3>
+            <p>Pop in for a quick patch test at least 48 hours before. It takes two minutes and no appointment.</p>
+          </div>
+          <div>
+            <h3>Wear your hair as usual</h3>
+            <p>For cuts, come with it dry and styled the way you normally wear it, so we can see how it sits.</p>
+          </div>
+          <div>
+            <h3>Running late</h3>
+            <p>Text us. Past 15 minutes we may have to shorten the service or move you to a later chair.</p>
+          </div>
+          <div>
+            <h3>Cancelling</h3>
+            <p>A day's notice by text, please. There's no deposit to book.</p>
           </div>
         </div>
       </div>
     </section>
 
-    <section id="book" class="section section-dark">
+    <section id="visit" class="section">
+      <div class="container visit-grid">
+        <div class="where">
+          <h2>Visit</h2>
+          <p class="address">Unit 2, 4821 Fernbrook Road<br>Beaumont, Alberta</p>
+          <p>In the strip mall beside the bakery. There's a free lot out front, and the whole salon is on the ground floor with a wide door.</p>
+          <a class="btn btn-line" href="https://www.google.com/maps/search/?api=1&query=Beaumont%2C+Alberta" target="_blank" rel="noopener">Directions</a>
+        </div>
+        <div class="week-wrap">
+          <ol class="week" aria-label="Opening hours">
+            <li data-day="1"><span class="d">Mon</span><span class="h">Closed</span></li>
+            <li data-day="2" class="walk"><span class="d">Tue</span><span class="h">9 to 6</span></li>
+            <li data-day="3" class="walk"><span class="d">Wed</span><span class="h">9 to 6</span></li>
+            <li data-day="4" class="walk"><span class="d">Thu</span><span class="h">9 to 8</span></li>
+            <li data-day="5"><span class="d">Fri</span><span class="h">9 to 8</span></li>
+            <li data-day="6"><span class="d">Sat</span><span class="h">9 to 4</span></li>
+            <li data-day="0"><span class="d">Sun</span><span class="h">Closed</span></li>
+          </ol>
+          <p class="week-key"><span class="key-walk" aria-hidden="true"></span> Walk-in days. Closed on stat holidays.</p>
+        </div>
+      </div>
+    </section>
+
+    <section id="book" class="section section-fern">
       <div class="container book-grid">
-        <div>
-          <h2>Request an appointment</h2>
-          <p class="muted">Tell us what you want and roughly when, and we'll text you back with a time.</p>
-          <dl class="book-facts">
-            <div><dt>Reply time</dt><dd>Usually within a couple of hours while we're open</dd></div>
-            <div><dt>Rather text?</dt><dd><a href="sms:+18254611264">(825) 461-1264</a></dd></div>
-            <div><dt>Cancelling</dt><dd>Text us at least 24 hours ahead, please</dd></div>
-          </dl>
+        <div class="book-intro">
+          <h2>Book a chair</h2>
+          <p>Tell us what you want and roughly when, and we'll text you back with a time.</p>
+          <p class="book-q">Questions first? <a href="sms:+18254611264">Text (825) 461-1264</a></p>
         </div>
         <form class="book-form" id="book-form" novalidate>
           <p class="form-step"><span>1</span> What and when</p>
@@ -218,6 +226,7 @@
                 <optgroup label="Barber"><option>Skin fade</option><option>Beard trim</option><option>Cut + beard</option><option>Hot towel shave</option></optgroup>
                 <optgroup label="Colour"><option>Root touch-up</option><option>Full colour</option><option>Partial highlights</option><option>Balayage</option><option>Consultation</option></optgroup>
               </select>
+              <span class="service-hint" id="service-hint"></span>
             </div>
             <div class="field">
               <label for="stylist">Stylist</label>
@@ -243,20 +252,20 @@
           <p class="form-step"><span>2</span> Your details</p>
           <div class="field-row">
             <div class="field">
-              <label for="name">Name</label>
+              <label for="name">Your name</label>
               <input id="name" name="name" autocomplete="name" required>
             </div>
             <div class="field">
-              <label for="phone">Mobile number</label>
+              <label for="phone">Cell number</label>
               <input id="phone" name="phone" type="tel" autocomplete="tel" inputmode="tel" required>
             </div>
           </div>
           <div class="field">
             <label for="notes">Anything we should know? <span class="opt">(optional)</span></label>
-            <textarea id="notes" name="notes" rows="3" placeholder="For example: first time colouring, or I'd like the same cut as last time."></textarea>
+            <textarea id="notes" name="notes" rows="3" placeholder="First colour with us, same cut as last time, a photo you'll bring in..."></textarea>
           </div>
-          <button type="submit" class="btn btn-accent btn-block">Request appointment</button>
-          <p class="form-fine">We only use your number to confirm this booking.</p>
+          <button type="submit" class="btn btn-fern btn-block">Request appointment</button>
+          <p class="form-fine">No deposit. We hold the time until you reply to our text.</p>
           <p class="form-status" id="form-status" role="status" aria-live="polite"></p>
         </form>
       </div>
@@ -265,34 +274,34 @@
   </main>
 
   <footer class="site-footer">
-    <div class="container footer-grid">
-      <div>
-        <a href="#top" class="brand brand-footer">
-          <span class="brand-mark" aria-hidden="true">F</span>
-          <span class="brand-text">Fernbrook<span>Hair &amp; Barber</span></span>
-        </a>
-        <p class="small">Salon and barber shop in Beaumont, Alberta.</p>
+    <div class="container">
+      <p class="footer-mark">Fernbrook</p>
+      <div class="footer-cols">
+        <div>
+          <p class="footer-h">Find us</p>
+          <p>Unit 2, 4821 Fernbrook Road<br>Beaumont, AB</p>
+          <p><a href="sms:+18254611264">Text (825) 461-1264</a></p>
+        </div>
+        <div>
+          <p class="footer-h">Open</p>
+          <p>Tue and Wed 9 to 6<br>Thu and Fri 9 to 8<br>Sat 9 to 4</p>
+        </div>
+        <nav aria-label="Footer">
+          <p class="footer-h">On this page</p>
+          <a href="#prices">Prices</a>
+          <a href="#team">Team</a>
+          <a href="#gallery">Gallery</a>
+          <a href="#visit">Visit</a>
+          <a href="#book">Book</a>
+        </nav>
       </div>
-      <nav class="footer-nav" aria-label="Footer">
-        <a href="#prices">Services &amp; prices</a>
-        <a href="#team">Team</a>
-        <a href="#gallery">Gallery</a>
-        <a href="#visit">Hours &amp; location</a>
-        <a href="#book">Book</a>
-      </nav>
-      <div class="demo-credit">
-        <p><strong>This is a demo site.</strong> Fernbrook Hair &amp; Barber is not a real business.</p>
-        <p>Designed and built by Samuel Olabode, web developer in Edmonton. Want one for your business? Text <a href="sms:+18254611264">825-461-1264</a>.</p>
-      </div>
-    </div>
-    <div class="container footer-base">
-      <p class="small">&copy; <span id="year">2026</span> Fernbrook Hair &amp; Barber (demo). Photos from Unsplash.</p>
+      <p class="footer-credit">Fernbrook is a made-up salon, used as a sample by Samuel Olabode, web developer in Edmonton. Like the look? <a href="sms:+18254611264">Text 825-461-1264</a>. Photos: Unsplash. <span id="year">2026</span></p>
     </div>
   </footer>
 
-  <div class="mobile-cta" aria-label="Quick contact">
-    <a href="sms:+18254611264" class="btn btn-outline">Text</a>
-    <a href="#book" class="btn btn-accent">Book now</a>
+  <div class="mobile-bar">
+    <p id="mobile-status">Walk-ins Tue to Thu</p>
+    <a href="#book" class="btn btn-blush">Book</a>
   </div>
 
   <script src="script.js" defer></script>
